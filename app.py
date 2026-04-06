@@ -177,11 +177,16 @@ def get_all_chats():
 
     return all_chats
 
+from flask import request, redirect, url_for, render_template_string
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     chats = get_all_chats()
     status = ""
+    success = request.args.get("success")
+
+    if success:
+        status = f"✅ Отправлено в {success} чатов"
 
     if request.method == "POST":
         chat_ids = request.form.getlist("chat_ids")
@@ -203,8 +208,8 @@ def index():
             if response.status_code == 200:
                 success += 1
 
-        status = f"Отправлено в {success} чатов"
-
+        return redirect(url_for("index", success=success)
+                        
     return render_template_string(HTML, chats=chats, status=status)
 
 
