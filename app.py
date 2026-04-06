@@ -13,7 +13,7 @@ HTML = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Рассылка</title>
+    <title>Бот-почтальон</title>
 
     <style>
         body {
@@ -51,8 +51,7 @@ HTML = """
             overflow-y: auto;
             border: 1px solid #eee;
             padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
+            margin-bottom: 15px;
         }
 
         .chat-item {
