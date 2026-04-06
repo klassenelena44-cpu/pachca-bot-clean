@@ -17,8 +17,8 @@ HTML = """
 
     <style>
         body {
-            font-family: Arial;
-            background: #f5f7fb;
+            font-family: -apple-system, BlinkMacSystemFont;
+            background: #f4f6f9;
             display: flex;
             justify-content: center;
             padding: 40px;
@@ -26,22 +26,63 @@ HTML = """
 
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
-            width: 500px;
+            padding: 25px;
+            border-radius: 14px;
+            width: 520px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        textarea {
+            margin-top: 10px;
         }
 
         .chat-list {
             max-height: 250px;
-            overflow-y: scroll;
-            border: 1px solid #ccc;
+            overflow-y: auto;
+            border: 1px solid #eee;
             padding: 10px;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .chat-item {
+            padding: 5px 0;
         }
 
         button {
+            margin-top: 15px;
             width: 100%;
+            padding: 12px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        .status {
+            margin-top: 15px;
             padding: 10px;
+            border-radius: 8px;
+            background: #e6f9ec;
+            color: #1e7e34;
+            display: none;
         }
     </style>
 
@@ -55,15 +96,21 @@ HTML = """
                 chats[i].style.display = text.includes(input) ? "" : "none";
             }
         }
+
+        function showStatus(text) {
+            let el = document.getElementById("status");
+            el.innerText = text;
+            el.style.display = "block";
+        }
     </script>
 
 </head>
 
 <body>
 <div class="container">
-    <h2>Рассылка</h2>
+    <h2>📨 Рассылка сообщений</h2>
 
-    <input type="text" id="search" onkeyup="searchChats()" placeholder="Поиск..."><br><br>
+    <input type="text" id="search" onkeyup="searchChats()" placeholder="Поиск чатов...">
 
     <form method="post">
         <div class="chat-list">
@@ -77,12 +124,12 @@ HTML = """
             {% endfor %}
         </div>
 
-        <textarea name="message" rows="4" style="width:100%"></textarea><br><br>
+        <textarea name="message" rows="4" placeholder="Введите сообщение..."></textarea>
 
         <button type="submit">Отправить</button>
     </form>
 
-    <p>{{ status }}</p>
+    <div id="status" class="status">{{ status }}</div>
 </div>
 </body>
 </html>
