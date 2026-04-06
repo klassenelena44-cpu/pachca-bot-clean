@@ -194,7 +194,7 @@ def index():
         chat_ids = request.form.getlist("chat_ids")
         message = request.form["message"]
 
-        success = 0
+        success_count = 0
 
         for chat_id in chat_ids:
             response = requests.post(
