@@ -13,11 +13,11 @@ HTML = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Бот-почтальон</title>
+    <title>Рассылка</title>
 
     <style>
         body {
-            font-family: Arial;
+            font-family: -apple-system, BlinkMacSystemFont;
             background: #f4f6f9;
             display: flex;
             justify-content: center;
@@ -29,13 +29,14 @@ HTML = """
             padding: 25px;
             border-radius: 14px;
             width: 520px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         h2 {
             margin-bottom: 15px;
         }
 
-        input, textarea {
+        input[type="text"], textarea {
             width: 100%;
             padding: 10px;
             border-radius: 8px;
@@ -51,7 +52,8 @@ HTML = """
             overflow-y: auto;
             border: 1px solid #eee;
             padding: 10px;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
         }
 
         .chat-item {
@@ -64,12 +66,17 @@ HTML = """
             display: flex;
             align-items: center;
             gap: 10px;
-        width: 100%;
+            width: 100%;
+            cursor: pointer;
         }
 
         .chat-item input {
-        flex-shrink: 0;
-        margin: 0;
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        .chat-item span {
+            display: inline-block;
         }
 
         button {
@@ -94,7 +101,6 @@ HTML = """
             border-radius: 8px;
             background: #e6f9ec;
             color: #1e7e34;
-            display: none;
         }
     </style>
 
@@ -116,7 +122,7 @@ HTML = """
 <div class="container">
     <h2>📨 Рассылка сообщений</h2>
 
-    <input type="text" id="search" onkeyup="searchChats()" placeholder="Поиск..."><br><br>
+    <input type="text" id="search" onkeyup="searchChats()" placeholder="Поиск чатов...">
 
     <form method="post">
         <div class="chat-list">
@@ -124,7 +130,7 @@ HTML = """
                 <div class="chat-item">
                     <label>
                         <input type="checkbox" name="chat_ids" value="{{ chat['id'] }}">
-                        <span>{{ chat['name'] }}<span>
+                        <span>{{ chat['name'] }}</span>
                     </label>
                 </div>
             {% endfor %}
@@ -135,7 +141,9 @@ HTML = """
         <button type="submit">Отправить</button>
     </form>
 
-    <div id="status" class="status">{{ status }}</div>
+    <div class="status">
+        {{ status }}
+    </div>
 </div>
 </body>
 </html>
