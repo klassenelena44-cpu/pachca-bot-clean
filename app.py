@@ -18,7 +18,7 @@ HTML = """
     <style>
         body {
             font-family: Arial;
-            background: #f5f7fb;
+            background: #f4f6f9;
             display: flex;
             justify-content: center;
             padding: 40px;
@@ -26,22 +26,62 @@ HTML = """
 
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
-            width: 500px;
+            padding: 25px;
+            border-radius: 14px;
+            width: 520px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        textarea {
+            margin-top: 10px;
         }
 
         .chat-list {
             max-height: 250px;
-            overflow-y: scroll;
-            border: 1px solid #ccc;
+            overflow-y: auto;
+            border: 1px solid #eee;
             padding: 10px;
-            margin-bottom: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .chat-item {
+            padding: 5px 0;
         }
 
         button {
+            margin-top: 15px;
             width: 100%;
+            padding: 12px;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        button:hover {
+            background: #4338ca;
+        }
+
+        .status {
+            margin-top: 15px;
             padding: 10px;
+            border-radius: 8px;
+            background: #e6f9ec;
+            color: #1e7e34;
+            display: none;
         }
     </style>
 
