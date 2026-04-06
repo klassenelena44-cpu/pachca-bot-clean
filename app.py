@@ -141,9 +141,11 @@ HTML = """
         <button type="submit">Отправить</button>
     </form>
 
-    <div class="status">
-        {{ status }}
-    </div>
+    {% if status %}
+        <div class="status">
+            {{ status }}
+        </div>
+    {% endif %}
 </div>
 </body>
 </html>
