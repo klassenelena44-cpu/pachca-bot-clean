@@ -189,7 +189,7 @@ def index():
     success = request.args.get("success")
 
     if success:
-        status = f"✅ Отправлено в {success} чатов"
+        status = f"✅ Отправлено в {success} чат(ов)"
 
     if request.method == "POST":
         chat_ids = request.form.getlist("chat_ids")
@@ -214,7 +214,7 @@ def index():
             if response.ok:
                 success_count += 1
 
-        return redirect(url_for("index", success=success))
+        return redirect(url_for("index", success=success_count))
                         
     return render_template_string(HTML, chats=chats, status=status)
 
