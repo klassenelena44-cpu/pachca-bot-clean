@@ -207,8 +207,8 @@ def index():
                     }
                 }
             )
-            if response.status_code == 200:
-                success += 1
+            if response.ok:
+                success_count += 1
 
         return redirect(url_for("index", success=success))
                         
