@@ -3,11 +3,30 @@ import requests
 
 app = Flask(__name__)
 
+app.secret_key = "supersecretkey123"
+PASSWORD = "fmart"
+
 API_TOKEN = "aCgIdxZ1YL3JXlX1SVlTbx7CaIRRAo-a_TscQ3yMLX8"
 
 headers = {
     "Authorization": f"Bearer {API_TOKEN}"
 }
+
+LOGIN_HTML = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вход</title>
+</head>
+<body style="font-family: Arial; display:flex; justify-content:center; padding-top:100px;">
+    <form method="post">
+        <h3>Введите пароль</h3>
+        <input type="password" name="password" style="padding:10px;"><br><br>
+        <button type="submit">Войти</button>
+    </form>
+</body>
+</html>
+"""
 
 HTML = """
 <!DOCTYPE html>
@@ -187,6 +206,13 @@ def index():
     chats = get_all_chats()
     status = ""
     success = request.args.get("success")
+
+    if not session.get("auth"):
+        if request.method == "POST":
+            if request.form.get("password") == PASSWORD:
+                session["auth"] = True
+                return redirect("/")
+        return render_template_string(LOGIN_HTML)
 
     if success:
         status = f"✅ Отправлено в {success} чат(ов)"
