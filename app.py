@@ -208,7 +208,7 @@ def index():
             if response.status_code == 200:
                 success += 1
 
-        return redirect(url_for("index", success=success)
+        return redirect(url_for("index", success=success))
                         
     return render_template_string(HTML, chats=chats, status=status)
 
