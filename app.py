@@ -55,7 +55,21 @@ HTML = """
         }
 
         .chat-item {
-            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            padding: 6px 0;
+        }
+
+        .chat-item label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        width: 100%;
+        }
+
+        .chat-item input {
+        flex-shrink: 0;
+        margin: 0;
         }
 
         button {
