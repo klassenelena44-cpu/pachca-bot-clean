@@ -183,10 +183,10 @@ from flask import request, redirect, url_for, render_template_string
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    print("SUCCESS PARAM:", request.args.get("success"))
     chats = get_all_chats()
     status = ""
     success = request.args.get("success")
-    print("SUCCESS PARAM:", request.args.get("success"))
 
     if success:
         status = f"✅ Отправлено в {success} чатов"
