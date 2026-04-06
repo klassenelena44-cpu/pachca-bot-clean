@@ -100,7 +100,7 @@ HTML = """
 
 <body>
 <div class="container">
-    <h2>Рассылка</h2>
+    <h2>📨 Рассылка сообщений</h2>
 
     <input type="text" id="search" onkeyup="searchChats()" placeholder="Поиск..."><br><br>
 
@@ -110,18 +110,18 @@ HTML = """
                 <div class="chat-item">
                     <label>
                         <input type="checkbox" name="chat_ids" value="{{ chat['id'] }}">
-                        {{ chat['name'] }}
+                        <span>{{ chat['name'] }}<span>
                     </label>
                 </div>
             {% endfor %}
         </div>
 
-        <textarea name="message" rows="4" style="width:100%"></textarea><br><br>
+        <textarea name="message" rows="4" placeholder="Введите сообщение..."></textarea>
 
         <button type="submit">Отправить</button>
     </form>
 
-    <p>{{ status }}</p>
+    <div id="status" class="status">{{ status }}</div>
 </div>
 </body>
 </html>
