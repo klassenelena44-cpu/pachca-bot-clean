@@ -60,6 +60,20 @@ HTML = """
             padding: 5px 0;
         }
 
+        .chat-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-label input {
+            margin: 0;
+        }
+
+        .chat-item {
+            padding: 6px 0;
+        }
+
         button {
             margin-top: 15px;
             width: 100%;
@@ -118,7 +132,7 @@ HTML = """
                 <div class="chat-item">
                     <label>
                         <input type="checkbox" name="chat_ids" value="{{ chat['id'] }}">
-                        {{ chat['name'] }}
+                        <span>{{ chat['name'] }}<span>
                     </label>
                 </div>
             {% endfor %}
