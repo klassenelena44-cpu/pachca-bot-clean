@@ -207,6 +207,9 @@ def index():
                     }
                 }
             )
+
+            print(response.status_code)
+            
             if response.ok:
                 success_count += 1
 
